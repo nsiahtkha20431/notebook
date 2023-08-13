@@ -8,20 +8,24 @@
 
 .notebook {
   position: relative;
-  display: flex;
-  align-items: start;
-  justify-content: center; 
   width: 95%; 
   margin: auto;
   border: 1px solid #ccc;
   padding: 20px;
   background-color: #f7f7f7;
+}
+
+.pages-container {
+  display: flex;
+  align-items: start;
+  justify-content: center; 
   overflow-x: scroll;
+  padding-right: 50px; 
 }
 
 .add-page-btn {
   position: absolute;
-  top: 50%;               /* Move the top edge to the middle of the container */
+  top: 50%;
   right: 10px; 
   background-color: rgba(240, 138, 138, 0.7); 
   border: none;

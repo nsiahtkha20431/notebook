@@ -19,9 +19,11 @@ function App() {
         <div className="app-container">
             <h2 className="title">♡nishat's journal♡</h2>
             <div className="notebook">
-                {pages.map((_, index) => (
-                    <NotebookPage key={index} onDelete={() => deletePage(index)} />
-                ))}
+                <div className="pages-container">
+                    {pages.map((_, index) => (
+                        <NotebookPage key={index} onDelete={() => deletePage(index)} />
+                    ))}
+                </div>
                 <button onClick={addPage} className="add-page-btn">→</button>
             </div>
         </div>
