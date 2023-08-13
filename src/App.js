@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import NotebookPage from './NotebookPage';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [pages, setPages] = useState([{}]);
+
+    const addPage = () => {
+        setPages([...pages, {}]);
+    }
+
+    const deletePage = (index) => {
+        const newPages = [...pages];
+        newPages.splice(index, 1);
+        setPages(newPages);
+    }
+
+    return (
+        <div className="app-container">
+            <h2 className="title">♡nishat's journal♡</h2>
+            <div className="notebook">
+                {pages.map((_, index) => (
+                    <NotebookPage key={index} onDelete={() => deletePage(index)} />
+                ))}
+                <button onClick={addPage} className="add-page-btn">→</button>
+            </div>
+        </div>
+    );
 }
 
 export default App;
