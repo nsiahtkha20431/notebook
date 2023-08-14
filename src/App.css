@@ -36,9 +36,9 @@
 
 .current-date {
   position: absolute;
-  top: 10px;  /* adjust as needed */
-  right: 10px;  /* adjust as needed */
-  font-size: 1em; /* adjust as needed */
+  top: 10px; 
+  right: 15px;  
+  font-size: 1em; 
   color: rgb(248, 164, 216);
   z-index: 10;
 }
