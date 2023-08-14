@@ -16,6 +16,14 @@ function App() {
       );
     }
 
+    const getCurrentDate = () => {
+      const date = new Date();
+      // Format date as "YYYY-MM-DD"
+      return date.toISOString().split('T')[0];
+    }
+
+    const currentDate = getCurrentDate();
+
     const addPage = () => {
         setPages([...pages, {}]);
     }
@@ -99,13 +107,22 @@ function App() {
         <div className="app-container">
             <h2 className="title">♡nishat's journal♡</h2>
             <div className="notebook">
-                <div className="pages-container" ref={pagesContainerRef} style={justifyContentStyle}>
-                    {pages.map((_, index) => (
-                        <NotebookPage key={index} onDelete={() => deletePage(index)} textareaRef={textareaRefs.current[index]}/>
-                    ))}
-                </div>
-                <button onClick={addPage} className="add-page-btn">→</button>
-                <button onClick={handleSave} className="save-btn">Save</button>
+              <span className="current-date">{currentDate}</span>
+              <div 
+                className="pages-container" 
+                ref={pagesContainerRef} 
+                style={justifyContentStyle}
+              >
+                {pages.map((_, index) => (
+                    <NotebookPage 
+                      key={index} 
+                      onDelete={() => deletePage(index)} 
+                      textareaRef={textareaRefs.current[index]}
+                    />
+                ))}
+              </div>
+              <button onClick={addPage} className="add-page-btn">→</button>
+              <button onClick={handleSave} className="save-btn">Save</button>
             </div>
         </div>
     );
