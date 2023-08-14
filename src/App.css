@@ -18,7 +18,7 @@
 .pages-container {
   display: flex;
   align-items: start;
-  justify-content: center; 
+  /* justify-content: center;  */
   overflow-x: scroll;
   padding-right: 50px; 
 }

@@ -10,18 +10,44 @@ function App() {
         setPages([...pages, {}]);
     }
 
+    // const deletePage = (index) => {
+    //     const newPages = [...pages];
+    //     newPages.splice(index, 1);
+    //     setPages(newPages);
+    // }
+
     const deletePage = (index) => {
-        const newPages = [...pages];
-        newPages.splice(index, 1);
-        setPages(newPages);
+      const isLastPage = index === pages.length - 1;
+      const newPages = [...pages];
+      newPages.splice(index, 1);
+      
+      setPages(newPages);
+  
+      // Introduce a slight delay to ensure React has completed its rendering
+      setTimeout(() => {
+          if (isLastPage && pagesContainerRef.current) {
+              const pageWidth = 550; // Adjust this to the actual width of your NotebookPage component
+              const newScrollPosition = pagesContainerRef.current.scrollLeft - pageWidth;
+  
+              pagesContainerRef.current.scrollTo({
+                  left: newScrollPosition,
+                  behavior: 'smooth'
+              });
+          }
+      }, 0);
     }
+  
+  
 
     // Scroll to the latest page when a new one is added
     useEffect(() => {
       if (pagesContainerRef.current) {
-          pagesContainerRef.current.scrollLeft = pagesContainerRef.current.scrollWidth;
+          pagesContainerRef.current.scrollTo({
+              left: pagesContainerRef.current.scrollWidth,
+              behavior: 'smooth'
+          });
       }
-    }, [pages]); // This effect runs whenever the 'pages' state changes
+    }, [pages]);
 
     return (
         <div className="app-container">
