@@ -6,6 +6,9 @@ function App() {
     const [pages, setPages] = useState([{}]);
     const pagesContainerRef = useRef(null);
 
+    const textareaRefs = useRef([]);
+    const justifyContentStyle = pages.length <= 3 ? { justifyContent: 'center' } : {};
+
     const addPage = () => {
         setPages([...pages, {}]);
     }
@@ -39,8 +42,6 @@ function App() {
           });
       }
     }, [pages]);
-
-    const textareaRefs = useRef([]);
 
     // Ensure the length of textareaRefs matches the pages
     if (textareaRefs.current.length !== pages.length) {
@@ -77,7 +78,7 @@ function App() {
         <div className="app-container">
             <h2 className="title">♡nishat's journal♡</h2>
             <div className="notebook">
-                <div className="pages-container" ref={pagesContainerRef}>
+                <div className="pages-container" ref={pagesContainerRef} style={justifyContentStyle}>
                     {pages.map((_, index) => (
                         <NotebookPage key={index} onDelete={() => deletePage(index)} textareaRef={textareaRefs.current[index]}/>
                     ))}
