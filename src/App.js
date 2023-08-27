@@ -16,6 +16,20 @@ function App() {
       );
     }
 
+    function formatDate(date) {
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+    
+      const day = date.getDate();
+      const monthIndex = date.getMonth();
+      const year = date.getFullYear();
+    
+      return monthNames[monthIndex] + ' ' + day + ', ' + year;
+    }
+
+    const currentDate = formatDate(new Date());;
+
     const addPage = () => {
         setPages([...pages, {}]);
     }
@@ -74,41 +88,57 @@ function App() {
       });
   }, [pages]);
 
-  function handleSave() {
-    const textToSave = pages.map((_, index) => {
-      if (textareaRefs.current[index] && textareaRefs.current[index].current) {
-        return textareaRefs.current[index].current.value;
-      }
-      return "";
-    }).join("\n\n");  // This separates each page with two newline characters
-  
-    const blob = new Blob([textToSave], { type: "text/plain;charset=utf-8" });
-    const href = URL.createObjectURL(blob);
-  
-    const link = document.createElement('a');
-    link.href = href;
-    link.download = 'journalentries.txt';
-    link.click(); // This simulates a click
-  
-    // Revoking the created URL to free up resources
-    URL.revokeObjectURL(href);
-  }
-  
 
-    return (
-        <div className="app-container">
-            <h2 className="title">♡nishat's journal♡</h2>
-            <div className="notebook">
-                <div className="pages-container" ref={pagesContainerRef} style={justifyContentStyle}>
-                    {pages.map((_, index) => (
-                        <NotebookPage key={index} onDelete={() => deletePage(index)} textareaRef={textareaRefs.current[index]}/>
-                    ))}
-                </div>
-                <button onClick={addPage} className="add-page-btn">→</button>
-                <button onClick={handleSave} className="save-btn">Save</button>
+  const handleSave = () => {
+    // Collect all the text from the pagesfa
+    const allText = pages.map((_, index) => {
+        if (textareaRefs.current[index] && textareaRefs.current[index].current) {
+            return textareaRefs.current[index].current.value;
+        }
+        return '';
+    }).join('\n');
+
+    // Prepend the current date to the collected text
+    const contentWithDate = `${currentDate}\n\n${allText}`;
+
+    // Create a blob with the content and generate a URL for it
+    const blob = new Blob([contentWithDate], { type: 'text/plain;charset=utf-8' });
+    const href = URL.createObjectURL(blob);
+
+    // Create a temporary anchor element to initiate the download
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = 'journalentries.txt';  // Suggested name for the download file
+
+    // Append the link to the document, trigger a click to start download, then remove the link
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  return (
+      <div className="app-container">
+          <h2 className="title">♡nishat's journal♡</h2>
+          <div className="notebook">
+            <span className="current-date">{currentDate}</span>
+            <div 
+              className="pages-container" 
+              ref={pagesContainerRef} 
+              style={justifyContentStyle}
+            >
+              {pages.map((_, index) => (
+                  <NotebookPage 
+                    key={index} 
+                    onDelete={() => deletePage(index)} 
+                    textareaRef={textareaRefs.current[index]}
+                  />
+              ))}
             </div>
-        </div>
-    );
+            <button onClick={addPage} className="add-page-btn">→</button>
+            <button onClick={handleSave} className="save-btn">Save</button>
+          </div>
+      </div>
+  );
 }
 
 export default App;
