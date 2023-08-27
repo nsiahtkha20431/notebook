@@ -88,9 +88,9 @@ function App() {
       });
   }, [pages]);
 
-  
+
   const handleSave = () => {
-    // Collect all the text from the pages
+    // Collect all the text from the pagesfa
     const allText = pages.map((_, index) => {
         if (textareaRefs.current[index] && textareaRefs.current[index].current) {
             return textareaRefs.current[index].current.value;
@@ -116,29 +116,29 @@ function App() {
     document.body.removeChild(link);
   };
 
-    return (
-        <div className="app-container">
-            <h2 className="title">♡nishat's journal♡</h2>
-            <div className="notebook">
-              <span className="current-date">{currentDate}</span>
-              <div 
-                className="pages-container" 
-                ref={pagesContainerRef} 
-                style={justifyContentStyle}
-              >
-                {pages.map((_, index) => (
-                    <NotebookPage 
-                      key={index} 
-                      onDelete={() => deletePage(index)} 
-                      textareaRef={textareaRefs.current[index]}
-                    />
-                ))}
-              </div>
-              <button onClick={addPage} className="add-page-btn">→</button>
-              <button onClick={handleSave} className="save-btn">Save</button>
+  return (
+      <div className="app-container">
+          <h2 className="title">♡nishat's journal♡</h2>
+          <div className="notebook">
+            <span className="current-date">{currentDate}</span>
+            <div 
+              className="pages-container" 
+              ref={pagesContainerRef} 
+              style={justifyContentStyle}
+            >
+              {pages.map((_, index) => (
+                  <NotebookPage 
+                    key={index} 
+                    onDelete={() => deletePage(index)} 
+                    textareaRef={textareaRefs.current[index]}
+                  />
+              ))}
             </div>
-        </div>
-    );
+            <button onClick={addPage} className="add-page-btn">→</button>
+            <button onClick={handleSave} className="save-btn">Save</button>
+          </div>
+      </div>
+  );
 }
 
 export default App;
