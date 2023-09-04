@@ -156,30 +156,39 @@ function App() {
   
   return (
       <div className="app-container">
-          <h2 className="title">♡nishat's journal♡ </h2>
+        <div className="header">
+          <div className="spacer"></div>
+          <h2 className="title">♡nishat's journal♡</h2>
           <div className="switch-container" onClick={toggleTheme}>
             <div className="switch">
               <div className="slider"></div>
             </div>
           </div>
-          <div className="notebook">
-            <span className="current-date">{currentDate}</span>
-            <div 
-              className="pages-container" 
-              ref={pagesContainerRef} 
-              style={justifyContentStyle}
-            >
-              {pages.map((_, index) => (
-                  <NotebookPage 
-                    key={index} 
-                    onDelete={() => deletePage(index)} 
-                    textareaRef={textareaRefs.current[index]}
-                  />
-              ))}
-            </div>
-            <button onClick={addPage} className="add-page-btn">→</button>
-            <button onClick={handleSave} className="save-btn">Save</button>
+        </div>
+        {/* <h2 className="title">♡nishat's journal♡ </h2>
+        <div className="switch-container" onClick={toggleTheme}>
+          <div className="switch">
+            <div className="slider"></div>
           </div>
+        </div> */}
+        <div className="notebook">
+          <span className="current-date">{currentDate}</span>
+          <div 
+            className="pages-container" 
+            ref={pagesContainerRef} 
+            style={justifyContentStyle}
+          >
+            {pages.map((_, index) => (
+                <NotebookPage 
+                  key={index} 
+                  onDelete={() => deletePage(index)} 
+                  textareaRef={textareaRefs.current[index]}
+                />
+            ))}
+          </div>
+          <button onClick={addPage} className="add-page-btn">→</button>
+          <button onClick={handleSave} className="save-btn">Save</button>
+        </div>
       </div>
   );
 }

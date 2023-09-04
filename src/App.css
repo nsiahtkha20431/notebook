@@ -16,6 +16,14 @@
   --current-date-color: rgb(243, 51, 185);
 }
 
+.header {
+  display: flex;
+  justify-content:space-between; /* This will push title to the left and the button to the right */
+  align-items: center; /* This will align them vertically */
+  width: 100%;
+  /* margin-left:900px; */
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -25,6 +33,7 @@
 }
 
 .title {
+  margin-bottom: 0;
   color: var(--title-color);
 }
 
