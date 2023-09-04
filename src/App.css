@@ -1,9 +1,40 @@
+/* Define variables for Light mode */
+:root {
+  --app-container-bg: #fff;
+  --title-color: rgb(248, 164, 216);
+  --notebook-bg: #f7f7f7;
+  --add-page-btn-bg: rgba(240, 138, 138, 0.7);
+  --current-date-color: rgb(248, 164, 216);
+}
+
+/* Define variables for Dark mode */
+[data-theme='dark'] {
+  --app-container-bg: rgb(64, 63, 75);
+  --title-color: rgb(243, 51, 185);
+  --notebook-bg: rgb(64, 63, 75);
+  --add-page-btn-bg: rgba(240, 138, 138, 0.7);  /* If you want to change this for dark mode, update here */
+  --current-date-color: rgb(243, 51, 185);
+}
+
+.header {
+  display: flex;
+  justify-content:space-between; /* This will push title to the left and the button to the right */
+  align-items: center; /* This will align them vertically */
+  width: 100%;
+  /* margin-left:900px; */
+}
+
 .app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center; 
+  background-color: var(--app-container-bg);
 }
 
 .title {
-  color: rgb(248, 164, 216);
+  margin-bottom: 0;
+  color: var(--title-color);
 }
 
 .notebook {
@@ -12,7 +43,7 @@
   margin: auto;
   border: 1px solid #ccc;
   padding: 20px;
-  background-color: #f7f7f7;
+  background-color: var(--notebook-bg);
 }
 
 .pages-container {
@@ -41,4 +72,49 @@
   font-size: 1em; 
   color: rgb(248, 164, 216);
   z-index: 10;
+}
+
+/* Toggle Switch Container */
+.switch-container {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 24px;
+  align-self: flex-end;
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+/* Toggle Switch */
+.switch {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Toggle Slider */
+.slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Dark Mode Toggle Styles */
+[data-theme='dark'] .switch {
+  background-color: #555;
+}
+
+[data-theme='dark'] .slider {
+  transform: translateX(36px);
 }
