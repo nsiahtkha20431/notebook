@@ -165,12 +165,6 @@ function App() {
             </div>
           </div>
         </div>
-        {/* <h2 className="title">♡nishat's journal♡ </h2>
-        <div className="switch-container" onClick={toggleTheme}>
-          <div className="switch">
-            <div className="slider"></div>
-          </div>
-        </div> */}
         <div className="notebook">
           <span className="current-date">{currentDate}</span>
           <div 
