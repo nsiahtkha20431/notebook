@@ -12,16 +12,15 @@
   --app-container-bg: rgb(64, 63, 75);
   --title-color: rgb(243, 51, 185);
   --notebook-bg: rgb(64, 63, 75);
-  --add-page-btn-bg: rgba(240, 138, 138, 0.7);  /* If you want to change this for dark mode, update here */
+  --add-page-btn-bg: rgb(243, 51, 185);  /* If you want to change this for dark mode, update here */
   --current-date-color: rgb(243, 51, 185);
 }
 
 .header {
   display: flex;
-  justify-content:space-between; /* This will push title to the left and the button to the right */
+  justify-content: space-between; 
   align-items: center; /* This will align them vertically */
   width: 100%;
-  /* margin-left:900px; */
 }
 
 .app-container {
@@ -33,8 +32,8 @@
 }
 
 .title {
-  margin-bottom: 0;
   color: var(--title-color);
+  padding-left: 35px;
 }
 
 .notebook {
@@ -58,7 +57,7 @@
   position: absolute;
   top: 50%;
   right: 10px; 
-  background-color: rgba(240, 138, 138, 0.7); 
+  background-color: var(--add-page-btn-bg); 
   border: none;
   color: white;
   cursor: pointer;
@@ -70,7 +69,7 @@
   top: 10px; 
   right: 15px;  
   font-size: 1em; 
-  color: rgb(248, 164, 216);
+  color: var(--current-date-color);
   z-index: 10;
 }
 
@@ -78,8 +77,8 @@
 .switch-container {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 24px;
+  width: 30px;
+  height: 16px;
   align-self: flex-end;
   margin-right: 30px;
   margin-bottom: 20px;
@@ -93,7 +92,7 @@
   right: 0;
   bottom: 0;
   background-color: #ccc;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -101,12 +100,12 @@
 /* Toggle Slider */
 .slider {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 20px;
-  height: 20px;
+  top: 1px;
+  left: 1px;
+  width: 14px;
+  height: 14px;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 7px;
   transition: transform 0.3s ease;
 }
 
@@ -116,5 +115,5 @@
 }
 
 [data-theme='dark'] .slider {
-  transform: translateX(36px);
+  transform: translateX(16px);
 }
