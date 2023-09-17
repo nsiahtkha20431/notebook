@@ -6,6 +6,9 @@
   --add-page-btn-bg: rgba(240, 138, 138, 0.7);
   --current-date-color: rgb(248, 164, 216);
   --toggle-btn-label-text-colour: rgb(248, 164, 216);
+  --scrollbar-track-color: #eae8e8;
+  --scrollbar-thumb-color: rgb(252, 198, 216);
+  --scrollbar-hover-color: rgb(234, 185, 201);
 }
 
 /* Define variables for Dark mode */
@@ -16,6 +19,9 @@
   --add-page-btn-bg: rgb(243, 51, 185);  /* If you want to change this for dark mode, update here */
   --current-date-color: rgb(243, 51, 185);
   --toggle-btn-label-text-colour: rgb(243, 51, 185);
+  --scrollbar-track-color: rgb(72, 71, 84);
+  --scrollbar-thumb-color: rgb(243, 51, 185);
+  --scrollbar-hover-color: rgb(212, 45, 162);
 }
 
 .header {
@@ -57,19 +63,20 @@
 /* Scrollbar styling */
 .pages-container::-webkit-scrollbar {
   width: 5px;  /* Width of the vertical scrollbar */
-  border-radius: 50%;
 }
 
 .pages-container::-webkit-scrollbar-track {
-  background: rgb(72, 71, 84);  /* Color of the track */
+  background: var(--scrollbar-track-color);  /* Color of the track */
+  border-radius: 10px;
 }
 
 .pages-container::-webkit-scrollbar-thumb {
-  background: rgb(243, 51, 185);  /* Color of the scroll thumb */
+  background: var(--scrollbar-thumb-color);  /* Color of the scroll thumb */
+  border-radius: 10px;
 }
 
 .pages-container::-webkit-scrollbar-thumb:hover {
-  background: rgb(212, 45, 162);  /* Color of the scroll thumb on hover */
+  background: var(--scrollbar-hover-color);  /* Color of the scroll thumb on hover */
 }
 
 .add-page-btn {
