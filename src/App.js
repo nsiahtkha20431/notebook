@@ -29,7 +29,7 @@ function App() {
     return monthNames[monthIndex] + ' ' + day + ', ' + year;
   }
 
-  const currentDate = formatDate(new Date());;
+  const currentDate = formatDate(new Date()).toLowerCase();
 
   const addPage = () => {
       setPages([...pages, {}]);
@@ -158,7 +158,7 @@ function App() {
       <div className="header">
         <div className="spacer"></div>
         <h2 className="title">♡nishat's journal♡</h2>
-        {/* <div className="switch-label-toggle-wrapper"> */}
+        <div className="switch-label-toggle-wrapper">
           <span id="toggle-btn-label">
             {theme === 'light' ? 'dark' : 'light'}
           </span>
@@ -167,12 +167,7 @@ function App() {
               <div className="slider"></div>
             </div>
           </div>
-        {/* </div> */}
-        {/* <div className="switch-container" onClick={toggleTheme}>
-          <div className="switch">
-            <div className="slider"></div>
-          </div>
-        </div> */}
+        </div>
       </div>
       <div className="notebook">
         <span className="current-date">{currentDate}</span>

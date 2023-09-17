@@ -75,6 +75,14 @@
   z-index: 10;
 }
 
+#toggle-btn-label {
+  color: var(--toggle-btn-label-text-colour);
+  /* border: 2px solid blue; */
+  /* padding-right: 100px; */
+  margin-top: 4px; 
+  margin-right: 5px;
+}
+
 /* Toggle Switch Container */
 .switch-container {
   position: relative;
@@ -82,15 +90,18 @@
   width: 30px;
   height: 16px;
   align-self: flex-end;
+  margin-top: 25px; 
   margin-right: 30px;
   margin-bottom: 20px;
   justify-content: flex-start; /* Align items to the start (left) */
+  /* border:2px solid red; */
 }
 
 /* New Wrapper Styles */
 .switch-label-toggle-wrapper {
   display: flex;
   align-items: center;  /* Align items vertically center */
+  /* border:2px solid yellow; */
 }
 
 /* Toggle Switch */
