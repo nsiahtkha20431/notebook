@@ -151,13 +151,16 @@ function App() {
   
   //   return () => clearInterval(interval);
   // }, [pages, currentDate]);
-
   
   return (
     <div className="app-container">
+
       <div className="header">
+
         <div className="spacer"></div>
+
         <h2 className="title">♡nishat's journal♡</h2>
+
         <div className="switch-label-toggle-wrapper">
           <span id="toggle-btn-label">
             {theme === 'light' ? 'dark' : 'light'}
@@ -168,9 +171,13 @@ function App() {
             </div>
           </div>
         </div>
+
       </div>
+
       <div className="notebook">
+
         <span className="current-date">{currentDate}</span>
+
         <div 
           className="pages-container" 
           ref={pagesContainerRef} 
@@ -184,9 +191,12 @@ function App() {
               />
           ))}
         </div>
+
         <button onClick={addPage} className="add-page-btn">→</button>
         <button onClick={handleSave} className="save-btn">Save</button>
+
       </div>
+      
     </div>
   );
 }

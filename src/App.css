@@ -42,7 +42,6 @@
   position: relative;
   width: 95%; 
   margin: auto;
-  border: 1px solid #ccc;
   padding: 20px;
   background-color: var(--notebook-bg);
 }
@@ -50,9 +49,27 @@
 .pages-container {
   display: flex;
   align-items: start;
-  /* justify-content: center;  */
   overflow-x: scroll;
   padding-right: 50px; 
+  margin-bottom: 15px;
+}
+
+/* Scrollbar styling */
+.pages-container::-webkit-scrollbar {
+  width: 5px;  /* Width of the vertical scrollbar */
+  border-radius: 50%;
+}
+
+.pages-container::-webkit-scrollbar-track {
+  background: rgb(72, 71, 84);  /* Color of the track */
+}
+
+.pages-container::-webkit-scrollbar-thumb {
+  background: rgb(243, 51, 185);  /* Color of the scroll thumb */
+}
+
+.pages-container::-webkit-scrollbar-thumb:hover {
+  background: rgb(212, 45, 162);  /* Color of the scroll thumb on hover */
 }
 
 .add-page-btn {
@@ -77,8 +94,6 @@
 
 #toggle-btn-label {
   color: var(--toggle-btn-label-text-colour);
-  /* border: 2px solid blue; */
-  /* padding-right: 100px; */
   margin-top: 4px; 
   margin-right: 5px;
 }
