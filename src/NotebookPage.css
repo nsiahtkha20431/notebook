@@ -1,0 +1,69 @@
+/* Define variables for Light mode */
+:root {
+    --save-btn-color: rgba(240, 138, 138, 0.7);
+    --delete-btn-color: rgba(240, 138, 138, 0.7);
+    --first-line-color: transparent;
+    --second-line-color: rgba(252, 198, 216, 0.5);
+    --text-color: black; 
+}
+
+/* Define variables for Dark mode */
+[data-theme='dark'] {
+    --save-btn-color: rgb(243, 51, 185);
+    --delete-btn-color: rgb(243, 51, 185);
+    --first-line-color: rgb(89, 87, 104);
+    --second-line-color: rgb(76, 74, 94);
+    /* --first-line-color: rgb(76, 74, 94);
+    --second-line-color: rgb(76, 74, 94); */
+    /* --first-line-color: rgb(89, 87, 104);
+    --second-line-color: rgb(89, 87, 104); */
+    --text-color: rgb(248, 173, 226);
+}
+
+.page-container {
+    position: relative;
+    width: 612px;
+}
+
+.lined-paper {
+    flex-shrink: 0;
+    width: 550px;   
+    height: 700px;  
+    margin: 0 20px 20px 20px;
+    padding: 20px;
+    line-height: 2em; 
+    background-image: linear-gradient(to bottom, var(--first-line-color) 50%, var(--second-line-color) 50%);
+    background-size: 100% 2em; /* Adjust to match the line height */
+    border: none;
+    font-size: 1em;
+    outline: none;
+    resize: none;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 10px;
+    background-color: var(--delete-btn-color); 
+    border: none;
+    border-radius: 50%; 
+    width: 20px;
+    height: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    outline: none;
+}
+
+.save-btn {
+    background-color: var(--save-btn-color); 
+    color: white;
+    border: none;
+    width: 70px;
+    height: 25px;
+    font-size: 17px;
+} 
