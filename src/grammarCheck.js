@@ -19,6 +19,18 @@ function grammarCheck(textarea) {
       text = text.replace(/\bwhats\b/gi, "what's");
       text = text.replace(/\bwiht\b/gi, "with");
       text = text.replace(/\bte\b/gi, "the");
+      text = text.replace(/\bthsi\b/gi, "this");
+      text = text.replace(/\bbecasue\b/gi, "because");
+      text = text.replace(/\bbecuase\b/gi, "because");
+      text = text.replace(/\bhabe\b/gi, "have");
+      text = text.replace(/\bisnt\b/gi, "isn't");
+      text = text.replace(/\babother\b/gi, "another");
+      text = text.replace(/\btheu\b/gi, "they");
+      text = text.replace(/\bmommy\b/gi, "Mommy");
+      text = text.replace(/\bdaddy\b/gi, "Daddy");
+      text = text.replace(/\baishah\b/gi, "Aishah");
+      text = text.replace(/\basad\b/gi, "Asad");
+
 
       this.value = text;
     });
