@@ -5,6 +5,10 @@
   --notebook-bg: #f7f7f7;
   --add-page-btn-bg: rgba(240, 138, 138, 0.7);
   --current-date-color: rgb(248, 164, 216);
+  --toggle-btn-label-text-colour: rgb(248, 164, 216);
+  --scrollbar-track-color: #eae8e8;
+  --scrollbar-thumb-color: rgb(252, 198, 216);
+  --scrollbar-hover-color: rgb(234, 185, 201);
 }
 
 /* Define variables for Dark mode */
@@ -14,6 +18,10 @@
   --notebook-bg: rgb(64, 63, 75);
   --add-page-btn-bg: rgb(243, 51, 185);  /* If you want to change this for dark mode, update here */
   --current-date-color: rgb(243, 51, 185);
+  --toggle-btn-label-text-colour: rgb(243, 51, 185);
+  --scrollbar-track-color: rgb(72, 71, 84);
+  --scrollbar-thumb-color: rgb(243, 51, 185);
+  --scrollbar-hover-color: rgb(212, 45, 162);
 }
 
 .header {
@@ -21,7 +29,7 @@
   justify-content: space-between; 
   align-items: center; /* This will align them vertically */
   width: 100%;
-}
+} 
 
 .app-container {
   display: flex;
@@ -40,7 +48,6 @@
   position: relative;
   width: 95%; 
   margin: auto;
-  border: 1px solid #ccc;
   padding: 20px;
   background-color: var(--notebook-bg);
 }
@@ -48,9 +55,28 @@
 .pages-container {
   display: flex;
   align-items: start;
-  /* justify-content: center;  */
   overflow-x: scroll;
   padding-right: 50px; 
+  margin-bottom: 15px;
+}
+
+/* Scrollbar styling */
+.pages-container::-webkit-scrollbar {
+  width: 5px;  /* Width of the vertical scrollbar */
+}
+
+.pages-container::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);  /* Color of the track */
+  border-radius: 10px;
+}
+
+.pages-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);  /* Color of the scroll thumb */
+  border-radius: 10px;
+}
+
+.pages-container::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover-color);  /* Color of the scroll thumb on hover */
 }
 
 .add-page-btn {
@@ -73,15 +99,31 @@
   z-index: 10;
 }
 
+#toggle-btn-label {
+  color: var(--toggle-btn-label-text-colour);
+  margin-top: 4px; 
+  margin-right: 5px;
+}
+
 /* Toggle Switch Container */
 .switch-container {
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
   width: 30px;
   height: 16px;
   align-self: flex-end;
+  margin-top: 25px; 
   margin-right: 30px;
   margin-bottom: 20px;
+  justify-content: flex-start; /* Align items to the start (left) */
+  /* border:2px solid red; */
+}
+
+/* New Wrapper Styles */
+.switch-label-toggle-wrapper {
+  display: flex;
+  align-items: center;  /* Align items vertically center */
+  /* border:2px solid yellow; */
 }
 
 /* Toggle Switch */
