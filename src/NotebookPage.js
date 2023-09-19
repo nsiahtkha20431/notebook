@@ -20,14 +20,20 @@ const NotebookPage = ({ onDelete, textareaRef, updatePage }) => {
           setIsBulletState(false);
           setConsecutiveEnters(0);
           textareaRef.current.value = textareaRef.current.value.slice(0, -4);
-          textareaRef.current.value += "\n";
+          textareaRef.current.value += "\n\n";
           updatePage(textareaRef.current.value);
         } else {
           setConsecutiveEnters(consecutiveEnters + 1);
           textareaRef.current.value += "\n\t- ";
           updatePage(textareaRef.current.value);
         }
-      } else {
+        // Set focus back to textarea and place cursor at the end
+        textareaRef.current.focus();
+        const len = textareaRef.current.value.length;
+        textareaRef.current.selectionStart = len;
+        textareaRef.current.selectionEnd = len;
+      }
+      else {
         setConsecutiveEnters(0);
       }
     };
@@ -51,11 +57,14 @@ const NotebookPage = ({ onDelete, textareaRef, updatePage }) => {
   };
 
   const handleMenuClick = () => {
-    setIsBulletState(true); // Enable bullet state
+    setIsBulletState(true);
     if (textareaRef.current) {
       textareaRef.current.value += "\n\t- ";
-      // Call updatePage() to update the state in parent
-      updatePage(textareaRef.current.value);
+      textareaRef.current.focus(); // Set focus back to textarea
+      const len = textareaRef.current.value.length; // Length of the text
+      textareaRef.current.selectionStart = len; // Move cursor to the end
+      textareaRef.current.selectionEnd = len;
+      updatePage(textareaRef.current.value); // Update state in parent
     }
     const menu = document.getElementById("bullet-menu");
     menu.style.display = "none";

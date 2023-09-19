@@ -11,6 +11,15 @@ function grammarCheck(textarea) {
       // Capitalize the first letter of the entire text
       text = text.charAt(0).toUpperCase() + text.slice(1);
 
+      // Capitalize the first letter of every new line
+      text = text.replace(/(\n)([a-z])/g, function (match, p1, p2) {
+        return p1 + p2.toUpperCase();
+      });
+
+      text = text.replace(/(\n\t- )[a-z]/g, function (match) {
+        return match.toUpperCase();
+    });
+
       // Auto-correct 
       text = text.replace(/\bi(?=\s)/g, 'I');
       text = text.replace(/\bwont\b/gi, "won't");
@@ -18,7 +27,7 @@ function grammarCheck(textarea) {
       text = text.replace(/\bthats\b/gi, "that's");
       text = text.replace(/\bwhats\b/gi, "what's");
       text = text.replace(/\bwiht\b/gi, "with");
-      text = text.replace(/\bte\b/gi, "the");
+      text = text.replace(/\bte \b/gi, "the ");
       text = text.replace(/\bthsi\b/gi, "this");
       text = text.replace(/\bbecasue\b/gi, "because");
       text = text.replace(/\bbecuase\b/gi, "because");
