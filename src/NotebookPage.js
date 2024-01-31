@@ -31,7 +31,7 @@ const NotebookPage = ({ onDelete, textareaRef, updatePage }) => {
         textareaRef.current.focus();
         const len = textareaRef.current.value.length;
         textareaRef.current.selectionStart = len;
-        textareaRef.current.selectionEnd = len;
+        // textareaRef.current.selectionEnd = len;
       }
       else {
         setConsecutiveEnters(0);

@@ -22,6 +22,8 @@ function grammarCheck(textarea) {
 
       // Auto-correct 
       text = text.replace(/\bi(?=\s)/g, 'I');
+      text = text.replace(/\bive\b/gi, "I've");
+      text = text.replace(/\bim\b/gi, "I'm");
       text = text.replace(/\bwont\b/gi, "won't");
       text = text.replace(/\bdont\b/gi, "don't");
       text = text.replace(/\bthats\b/gi, "that's");
@@ -39,7 +41,10 @@ function grammarCheck(textarea) {
       text = text.replace(/\bdaddy\b/gi, "Daddy");
       text = text.replace(/\baishah\b/gi, "Aishah");
       text = text.replace(/\basad\b/gi, "Asad");
-
+      text = text.replace(/\bdoesnt\b/gi, "doesn't");
+      text = text.replace(/\bwasnt\b/gi, "wasn't");
+      text = text.replace(/\bdidnt\b/gi, "didn't");
+      text = text.replace(/\bwouldnt\b/gi, "wouldn't");
 
       this.value = text;
     });

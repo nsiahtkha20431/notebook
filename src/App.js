@@ -102,62 +102,62 @@ function App() {
   }, [pages]);
   
   // Autosave every 30 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleSave();
-    }, 30000);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     handleSave();
+  //   }, 30000);
   
-    return () => clearInterval(interval);
-  }, [pages, currentDate]);
+  //   return () => clearInterval(interval);
+  // }, [pages, currentDate]);
   
-  // const handleSave = () => {
-  //   // Collect all the text from the pagesfa
-  //   const allText = pages.map((_, index) => {
-  //       if (textareaRefs.current[index] && textareaRefs.current[index].current) {
-  //           return textareaRefs.current[index].current.value;
-  //       }
-  //       return '';
-  //   }).join('\n');
-
-  //   // Prepend the current date to the collected text
-  //   const contentWithDate = `${currentDate}\n\n${allText}`;
-
-  //   // Create a blob with the content and generate a URL for it
-  //   const blob = new Blob([contentWithDate], { type: 'text/plain;charset=utf-8' });
-  //   const href = URL.createObjectURL(blob);
-
-  //   // Create a temporary anchor element to initiate the download
-  //   const link = document.createElement("a");
-  //   link.href = href;
-  //   link.download = 'journalentries.txt';  // Suggested name for the download file
-
-  //   // Append the link to the document, trigger a click to start download, then remove the link
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   document.body.removeChild(link);
-  // };
-
   const handleSave = () => {
-    console.log("Pages before saving: ", pages);
-    fetch('http://localhost:3001/save', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        date: currentDate,
-        content: pages,  // Make sure this variable contains what you want to save
-      }),
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    // Collect all the text from the pagesfa
+    const allText = pages.map((_, index) => {
+        if (textareaRefs.current[index] && textareaRefs.current[index].current) {
+            return textareaRefs.current[index].current.value;
+        }
+        return '';
+    }).join('\n');
+
+    // Prepend the current date to the collected text
+    const contentWithDate = `${currentDate}\n\n${allText}`;
+
+    // Create a blob with the content and generate a URL for it
+    const blob = new Blob([contentWithDate], { type: 'text/plain;charset=utf-8' });
+    const href = URL.createObjectURL(blob);
+
+    // Create a temporary anchor element to initiate the download
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = 'journalentries.txt';  // Suggested name for the download file
+
+    // Append the link to the document, trigger a click to start download, then remove the link
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
+
+  // const handleSave = () => {
+  //   console.log("Pages before saving: ", pages);
+  //   fetch('http://localhost:3001/save', {
+  //     method: 'POST',
+  //     mode: 'cors',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       date: currentDate,
+  //       content: pages,  // Make sure this variable contains what you want to save
+  //     }),
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log('Success:', data);
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error:', error);
+  //   });
+  // };
 
   return (
     <div className="app-container">
