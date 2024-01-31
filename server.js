@@ -39,6 +39,7 @@ app.use(express.json());
 
 // Save entry
 app.post('/save', (req, res) => {
+  console.log("Received request body: ", req.body);
   // Convert the date to MySQL-compatible format
   const jsDate = new Date(req.body.date);
   const mysqlDate = `${jsDate.getFullYear()}-${jsDate.getMonth() + 1}-${jsDate.getDate()}`;
@@ -55,7 +56,6 @@ app.post('/save', (req, res) => {
     res.send('Entry saved...');
   });
 });
-
 
 // Listen on port
 app.listen(3001, () => {

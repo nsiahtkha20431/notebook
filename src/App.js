@@ -61,6 +61,12 @@ function App() {
     document.documentElement.setAttribute('data-theme', newTheme);
   };    
 
+  const updatePage = (index, newContent) => {
+    const updatedPages = [...pages];
+    updatedPages[index] = { content: newContent }; // Update only the content at the specified index
+    setPages(updatedPages);
+  };
+
   // Scroll to the latest page when a new one is added
   useEffect(() => {
     if (pagesContainerRef.current) {
@@ -94,7 +100,16 @@ function App() {
         };
     });
   }, [pages]);
-
+  
+  // Autosave every 30 seconds
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     handleSave();
+  //   }, 30000);
+  
+  //   return () => clearInterval(interval);
+  // }, [pages, currentDate]);
+  
   const handleSave = () => {
     // Collect all the text from the pagesfa
     const allText = pages.map((_, index) => {
@@ -123,6 +138,7 @@ function App() {
   };
 
   // const handleSave = () => {
+  //   console.log("Pages before saving: ", pages);
   //   fetch('http://localhost:3001/save', {
   //     method: 'POST',
   //     mode: 'cors',
@@ -142,16 +158,7 @@ function App() {
   //     console.error('Error:', error);
   //   });
   // };
-  
-  // // Autosave every 30 seconds
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     handleSave();
-  //   }, 30000);
-  
-  //   return () => clearInterval(interval);
-  // }, [pages, currentDate]);
-  
+
   return (
     <div className="app-container">
 
@@ -188,6 +195,7 @@ function App() {
                 key={index} 
                 onDelete={() => deletePage(index)} 
                 textareaRef={textareaRefs.current[index]}
+                updatePage={(newContent) => updatePage(index, newContent)}
               />
           ))}
         </div>

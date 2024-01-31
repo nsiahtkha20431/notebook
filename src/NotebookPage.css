@@ -67,3 +67,23 @@
     height: 25px;
     font-size: 17px;
 } 
+
+.bullet-menu {
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 999;
+    display: none;
+    width: 100px;
+}
+  
+.bullet-menu-item {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.bullet-menu-item:hover {
+    background-color: #eee;
+}
+  
